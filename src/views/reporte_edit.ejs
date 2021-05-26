@@ -1,0 +1,44 @@
+<%- include('./partials/_header'); %>
+<div class="container mt-4">
+        <div class="col-md-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        REPORTE DE SEDE EDIT
+                    </h5><br>
+                    <form action="/coordinador/update/<%= data.id %>" method="POST">
+                        <div class="form-group">
+                            <h5>Usuarios Atendidos</h5>
+                            <input type="number" name="usuarios_atendidos" placeholder="Usuarios atendidos" value="<%= data.usuarios_atendidos%>" class="form-control"
+                                autofocus>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5>Expedientes iniciados</h5>
+                            <input type="number" name="expedientes_iniciados" placeholder="Expedientes iniciados" value="<%= data.expedientes_iniciados%>" class="form-control"
+                                autofocus>
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5>Acuerdos Reparatorios</h5>
+                            <input type="number" name="acuerdos_reparatorios" placeholder="Acuerdos Reparatorios" value="<%= data.acuerdos_reparatorios%>" class="form-control">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <h5>Sesiones conjuntas</h5>
+                            <input type="number" name="sesiones_conjuntas" placeholder="Sesiones conjuntas" value="<%= data.sesiones_conjuntas%>" class="form-control">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <button type="submit" class="btn btn-primary">
+                            ACTUALIZAR
+                        </button>
+                    </form>
+                </div>
+            </div>
+            <br>
+        </div>
+</div>
+
+<%- include('./partials/_footer'); %>

@@ -26,5 +26,27 @@ controller.save = async (req,res) =>{
     })
 }
 
+controller.edit = (req, res) => {
+    const { id } = req.params;
+    req.getConnection((err, conn) => {
+        conn.query("SELECT * FROM reportes_sedes WHERE id = ?", [id], (err, rows) => {
+            res.render('reporte_edit', {
+                data: rows[0]
+            })
+        });
+    });
+};
+
+controller.update = (req, res) => {
+    const { id } = req.params;
+    const updateReport = req.body;
+    req.getConnection((err, conn) => {
+
+        conn.query('UPDATE reportes_sedes set ? where id = ?', [updateReport, id], (err, rows) => {
+            res.redirect('/coordinador');
+        });
+    });
+};
+
 
 module.exports = controller;

@@ -39,8 +39,7 @@
                                     </td>
                                 
                                     <td>
-                                        <a href="/update/<%= reportes[i].id %>" class="btn btn-info">Edit</a>
-                                        <a href="/delete/<%= reportes[i].id %>" class="btn btn-danger">Delete</a>
+                                        <a href="coordinador/update/<%= reportes[i].id %>" class="btn btn-info">Edit</a>
                                     </td>
                                 </tr>
                             <% } %>
@@ -86,7 +85,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input type="hidden" name="id_usuario" value="<%= sedes[1].id_usuario %>"
+                                <input type="hidden" name="id_usuario" value="<%= sedes[1].id_user %>"
                                     class="form-control">
                             </div>
                             <br>
