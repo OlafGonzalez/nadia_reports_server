@@ -1,9 +1,13 @@
 const controller = {};
 const bycryptjs = require('bcryptjs')
 
+controller.home = (req,res) =>{
+    res.render('login');
+}
+
 controller.login = (req, res) => {
-    const usuario = req.body.usuario
-    const contrasena = req.body.contrasena
+    const usuario = req.body.username
+    const contrasena = req.body.password
 
     req.getConnection((err, conn) => {
         conn.query('SELECT * FROM usuarios where usuario = ?',[usuario], async (err, usuario) => {
@@ -13,11 +17,16 @@ controller.login = (req, res) => {
             if(usuario){
                 if(usuario.length == 0 || !(await bycryptjs.compare(contrasena,usuario[0].contrasena))){
                     ////USUARIO O CONTRA INCORRECTO
+                    console.log("LOGIN FAIL")
+
                 }else{
                     ////LOGIN CORRECTO
+                    console.log("LOGIN")
                 }
             }else{
                 ///ERROR USUARIO NO EXISTE 
+                console.log("LOGIN FAIL USER")
+
             }
         });
     });

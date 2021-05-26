@@ -25,7 +25,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use('/usuarios', usuarioRoutes);
-app.use('/app',appRoutes)
+app.use('/',appRoutes)
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
