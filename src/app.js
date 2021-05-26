@@ -4,6 +4,7 @@ const app = express();
 
 // importing routes
 const customerRoutes = require('./routes/customer');
+const usuarioRoutes = require('./routes/usuarios')
 
 // settings
 app.set('port', process.env.PORT || 3000);
@@ -22,7 +23,7 @@ app.use(myConnection(mysql, {
 app.use(express.urlencoded({ extended: false }));
 
 // routes
-app.use('/', customerRoutes);
+app.use('/', usuarioRoutes);
 
 // static files
 app.use(express.static(path.join(__dirname, 'public')));
