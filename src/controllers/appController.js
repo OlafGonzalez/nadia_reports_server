@@ -22,6 +22,12 @@ controller.login = (req, res) => {
                 }else{
                     ////LOGIN CORRECTO
                     console.log("LOGIN")
+                    if(usuario[0].rol == "admin"){
+
+                    }
+                    if(usuario[0].rol == "coordinador"){
+                        
+                    }
                 }
             }else{
                 ///ERROR USUARIO NO EXISTE 
@@ -34,16 +40,13 @@ controller.login = (req, res) => {
 
 controller.register = async (req,res) =>{
     const nombre = req.body.nombre
-    const apellidos = req.body.apellidos
     const usuario = req.body.usuario
-    const correo = req.body.correo
     const rol = req.body.rol
-    const numero = req.body.numero
     const contrasena = req.body.contrasena
     let password_encriptada = await bycryptjs.hash(contrasena,8)
 
     req.getConnection((err, conn) => {
-        conn.query('INSERT INTO usuarios set ?',{nombre:nombre,apellidos:apellidos,usuario:usuario,correo:correo,rol:rol,contrasena:password_encriptada,numero:numero}, (err, usuario) => {
+        conn.query('INSERT INTO usuarios set ?',{nombre:nombre,usuario:usuario,rol:rol,contrasena:password_encriptada}, (err, usuario) => {
             if (err) {
                 res.json(err);
             }

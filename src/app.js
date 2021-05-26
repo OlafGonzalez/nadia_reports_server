@@ -6,6 +6,7 @@ const app = express();
 const customerRoutes = require('./routes/customer');
 const usuarioRoutes = require('./routes/usuarios')
 const appRoutes = require('./routes/app')
+const coordinadoresRoutes = require('./routes/coordinador')
 
 // settings
 app.set('port', process.env.PORT || 3000);
@@ -25,6 +26,7 @@ app.use(express.urlencoded({ extended: false }));
 
 // routes
 app.use('/usuarios', usuarioRoutes);
+app.use('/coordinador',coordinadoresRoutes)
 app.use('/',appRoutes)
 
 // static files
