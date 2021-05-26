@@ -2,14 +2,23 @@ const controller = {};
 const bycryptjs = require('bcryptjs')
 
 controller.login = (req, res) => {
+    const usuario = req.body.usuario
+    const contrasena = req.body.contrasena
+
     req.getConnection((err, conn) => {
-        conn.query('SELECT * FROM customer', (err, customers) => {
+        conn.query('SELECT * FROM usuarios where usuario = ?',[usuario], async (err, usuario) => {
             if (err) {
                 res.json(err);
             }
-            res.render('customers', {
-                data: customers
-            });
+            if(usuario){
+                if(usuario.length == 0 || !(await bycryptjs.compare(contrasena,usuario[0].contrasena))){
+                    ////USUARIO O CONTRA INCORRECTO
+                }else{
+                    ////LOGIN CORRECTO
+                }
+            }else{
+                ///ERROR USUARIO NO EXISTE 
+            }
         });
     });
 };
@@ -33,7 +42,6 @@ controller.register = async (req,res) =>{
             //REDIRIGIR A TABLA DE usuarios
         });
     });
-
 }
 
 
