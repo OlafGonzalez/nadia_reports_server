@@ -11,10 +11,22 @@ controller.home = async (req,res) =>{
     let rol = localStorage.getItem('rol')
     let hoy = utilities.formatDateOnlyDate(new Date())
 
+    let t_ua = 0
+    let t_ei = 0
+    let t_ar = 0
+    let t_sc = 0
+
     if(rol == "ADMIN"){
         reportes = await coordinadorService.FindReportesDiariosForAdmin(req,hoy)
     }else{
         reportes = await coordinadorService.FindReportesDiarios(req,id_user,hoy)
+    }
+
+    for (const reporte of reportes) {
+        t_ua+= reporte.usuarios_atendidos
+        t_ei+= reporte.expedientes_iniciados
+        t_ar+= reporte.acuerdos_reparatorios
+        t_sc+= reporte.sesiones_conjuntas
     }
 
     sedes_user = await coordinadorService.FindSedeUserByIdUser(req,id_user)
@@ -22,7 +34,11 @@ controller.home = async (req,res) =>{
     res.render('reportes_sede',{
         sedes:sedes_user,
         reportes:reportes,
-        rol:rol
+        rol:rol,
+        t_ua:t_ua,
+        t_ei:t_ei,
+        t_ar:t_ar,
+        t_sc:t_sc
     });
 
 }

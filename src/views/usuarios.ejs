@@ -1,4 +1,12 @@
-<%- include('./partials/_header_coordinador'); %>
+<% if (rol == "ADMIN") { %>
+    <%- include('./partials/_header'); %>
+<% } %>
+
+<% if (rol == "COORDINADOR") { %>
+    <%- include('./partials/_header_coordinador'); %>
+<% } %>
+
+
 
 <% if (signupMessage != "") { %>
     <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -17,9 +25,8 @@
                         <tr>
                             <td>ID</td>
                             <td>Nombre</td>
-                            <td>Apellidos</td>
-                            <td>Numero</td>
-                            <td>Acciones</td>
+                            <td>Usuario</td>
+                            <td>Rol</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +38,12 @@
                                     </td>
                                     <td>
                                         <%= data[i].nombre %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].usuario %>
+                                    </td>
+                                    <td>
+                                        <%= data[i].rol %>
                                     </td>
                                 </tr>
                                 <% } %>
