@@ -19,14 +19,8 @@ app.set('view engine', 'ejs')
 
 // middlewares
 app.use(morgan('dev'));
-app.use(myConnection(mysql, {
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    port: 3306,
-    database: 'nch_reports_'
-}, 'single'));
 app.use(express.urlencoded({ extended: false }));
+
 app.use(session({
     secret:'mykey',
     resave:false,
@@ -37,13 +31,13 @@ app.use(passport.initialize())
 app.use(passport.session());
 
 app.use((req,res,next) =>{
-    app.locals.signupMessage = req.flash('signupMessage');
+    app.locals.signupMessage = req.flash('signupMessage')
     next();
 })
 
 // routes
-app.use('/usuarios', usuarioRoutes);
-app.use('/coordinador',coordinadoresRoutes)
+app.use('/admin', usuarioRoutes);
+app.use('/reportes',coordinadoresRoutes)
 app.use('/',appRoutes)
 
 // static files

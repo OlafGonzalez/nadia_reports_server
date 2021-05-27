@@ -3,14 +3,15 @@ const pool = require("../settings/PoolMySQL");
 exports.Save = async (req,data) => {
     let promise = new Promise(async (resolve, reject) => {
         try {
-            await req.getConnection(async (err, conn) => {
-                conn.query('INSERT INTO usuarios set ?', data, (err, usuario) => {
+            await pool.getConnection(async (err, connection) => {
+                connection.query('INSERT INTO usuarios set ?', data, (err, usuario) => {
                     if (err) {
                         resolve(null)
                     } else {
                         resolve(usuario)
                     }
                 });
+                connection.release();
             })
         } catch (error) {
             reject(error);
@@ -22,14 +23,15 @@ exports.Save = async (req,data) => {
 exports.findbyId = async (id) => {
     let promise = new Promise(async (resolve, reject) => {
         try {
-            await pool.getConnection(async (err, conn) => {
-                conn.query('SELECT * FROM usuarios where id = ?',id, (err, usuario) => {
+            await pool.getConnection(async (err, connection) => {
+                connection.query('SELECT * FROM usuarios where id = ?',id, (err, usuario) => {
                     if (err) {
                         resolve(null)
                     } else {
                         resolve(usuario[0])
                     }
                 });
+                connection.release();
             })
         } catch (error) {
             reject(error);
@@ -41,14 +43,15 @@ exports.findbyId = async (id) => {
 exports.findbyUser = async (user) => {
     let promise = new Promise(async (resolve, reject) => {
         try {
-            await pool.getConnection(async (err, conn) => {
-                conn.query('SELECT * FROM usuarios where usuario = ?',user, (err, usuario) => {
+            await pool.getConnection(async (err, connection) => {
+                connection.query('SELECT * FROM usuarios where usuario = ?',user, (err, usuario) => {
                     if (err) {
                         resolve(null)
                     } else {
                         resolve(usuario[0])
                     }
                 });
+                connection.release();
             })
         } catch (error) {
             reject(error);

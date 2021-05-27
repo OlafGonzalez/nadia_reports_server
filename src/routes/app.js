@@ -3,9 +3,12 @@ const passport = require('passport')
 const appController = require('../controllers/appController');
 
 
-router.get('/',appController.home)
+router.get('/',appController.sigin)
+
+router.get('/home',appController.home)
+
 router.post('/login',passport.authenticate('local-signin',{
-    successRedirect:"/coordinador",
+    successRedirect:"/home",
     failureRedirect:"/",
     passReqToCallback:true
 }))
