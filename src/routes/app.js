@@ -14,8 +14,8 @@ router.post('/login',passport.authenticate('local-signin',{
 }))
 
 router.post('/register',passport.authenticate('local-signup',{
-    successRedirect:"/usuarios",
-    failureRedirect:"/usuarios",
+    successRedirect:"/admin",
+    failureRedirect:"/admin",
     passReqToCallback:true
 }))
 
