@@ -6,7 +6,6 @@
                 <table class="table table-bordered table-hover">
                     <thead>
                         <tr>
-                            <td>ID</td>
                             <td>SEDE</td>
                             <td>Usuarios atendidos</td>
                             <td>Expedientes iniciados</td>
@@ -20,10 +19,7 @@
                             <% for(var i=0; i < reportes.length; i++) { %>
                                 <tr>
                                     <td>
-                                        <%= (i + 1) %>
-                                    </td>
-                                    <td>
-                                        <%= reportes[i].id_sede %>
+                                        <%= reportes[i].nombre %>
                                     </td>
                                     <td>
                                         <%= reportes[i].usuarios_atendidos %>

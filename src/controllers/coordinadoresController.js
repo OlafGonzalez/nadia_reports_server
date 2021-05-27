@@ -1,5 +1,5 @@
 const controller = {};
-const coordinadorService = require("../services/coordinador")
+const coordinadorService = require("../services/coordinador");
 
 controller.home = async (req,res) =>{
     var sedes_user = null

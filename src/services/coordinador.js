@@ -22,7 +22,7 @@ exports.FindReportesDiarios = async (req, id_user) => {
     let promise = new Promise(async (resolve, reject) => {
         try {
             await req.getConnection(async (err, conn) => {
-                await conn.query('select * from reportes_sedes where fecha_reporte = "2021-05-26" ',function (err, reportes) {
+                await conn.query('select RS.*, S.nombre from reportes_sedes as RS left join sedes as S on S.id = RS.id_sede where fecha_reporte = "2021-05-26" ',function (err, reportes) {
                     if (err) {
                         resolve(null)
                     } else {
