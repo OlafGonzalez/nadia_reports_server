@@ -3,17 +3,18 @@ const app = express();
 const passport = require('passport')
 const session = require('express-session')
 const flash = require('connect-flash')
+require("dotenv").config();
 
 // importing routes
-const customerRoutes = require('./routes/customer');
-const usuarioRoutes = require('./routes/usuarios')
-const appRoutes = require('./routes/app')
-const coordinadoresRoutes = require('./routes/coordinador')
+const customerRoutes = require('./src/routes/customer');
+const usuarioRoutes = require('./src/routes/usuarios')
+const appRoutes = require('./src/routes/app')
+const coordinadoresRoutes = require('./src/routes/coordinador')
 
 // settings
-require('./settings/passport')
-app.set('port', process.env.PORT || 3000);
-app.set('views', path.join(__dirname, 'views'));
+require('./src/settings/passport')
+app.set('port', process.env.PORT_SERVER || 3000);
+app.set('views', path.join(__dirname, 'src/views'));
 app.set('view engine', 'ejs')
 
 
