@@ -7,8 +7,8 @@ const pool = require("../settings/PoolMySQL");
 controller.home = async (req,res) =>{
     var sedes_user = null
     var reportes = null
-    let id_user = localStorage.getItem('id_user')
-    let rol = localStorage.getItem('rol')
+    let id_user = sessionStorage.getItem('id_user')
+    let rol = sessionStorage.getItem('rol')
     let hoy = utilities.formatDateOnlyDate(new Date())
 
     let t_ua = 0

@@ -52,8 +52,8 @@ passport.use('local-signin', new LocalStrategy({
         ////USUARIO O CONTRA INCORRECTO
         return done(null,false, req.flash('signupMessage','La contrasena es incorrecta.'));
     }
-    localStorage.setItem('id_user', user.id);
-    localStorage.setItem('rol',user.rol)
+    sessionStorage.setItem('id_user', user.id);
+    sessionStorage.setItem('rol',user.rol)
 
     done(null,user)
 

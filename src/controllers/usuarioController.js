@@ -2,7 +2,7 @@ const controller = {};
 const pool = require("../settings/PoolMySQL");
 
 controller.list = async (req, res) => {
-    let rol = localStorage.getItem('rol')
+    let rol = sessionStorage.getItem('rol')
     pool.getConnection(async (err, connection) => {
         await connection.query('SELECT * FROM usuarios', (err, customers) => {
             if (err) {
