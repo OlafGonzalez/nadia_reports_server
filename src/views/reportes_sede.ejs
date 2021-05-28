@@ -81,7 +81,7 @@
                                         <div class="card-body">
                                             <% for(var i=0; i < reportes.length; i++) { %>
                                                 <h5><%= reportes[i].nombre %></h5>
-                                                <p>Usarios Atendidos: <%= reportes[i].usuarios_atendidos %></p>
+                                                <p>Usuarios Atendidos: <%= reportes[i].usuarios_atendidos %></p>
                                                 <p>Expedientes iniciados: <%= reportes[i].expedientes_iniciados %></p>
                                                 <p>Acuerdos Reparatorios: <%= reportes[i].acuerdos_reparatorios %></p>
                                                 <p>Sesiones conjuntas: <%= reportes[i].sesiones_conjuntas %></p>
@@ -167,7 +167,7 @@
                                                             <div class="form-check form-check-inline">
                                                                 <input class="form-check-input" type="radio" name="id_sede"
                                                                     id="inlineRadio<%=sedes[i].id_sede%>"
-                                                                    value="<%=sedes[i].id_sede%>" checked>
+                                                                    value="<%=sedes[i].id_sede%>">
                                                                 <label class="form-check-label"
                                                                     for="inlineRadio<%=sedes[i].id_sede%>">
                                                                     <%=sedes[i].nombre%>
