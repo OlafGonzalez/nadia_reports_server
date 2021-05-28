@@ -7,6 +7,7 @@ router.get("/",isLoggedIn,coordinadorController.home)
 router.get('/update/:id',isLoggedIn, coordinadorController.edit);
 router.post('/add',isLoggedIn, coordinadorController.save);
 router.post('/update/:id', isLoggedIn,coordinadorController.update);
+router.get('/delete/:id', coordinadorController.delete);
 
 
 

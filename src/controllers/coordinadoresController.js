@@ -87,5 +87,15 @@ controller.update = (req, res) => {
     });
 };
 
+controller.delete = (req, res) => {
+    const { id } = req.params;
+    pool.getConnection((err, connection) => {
+        connection.query('DELETE FROM reportes_sedes WHERE id = ?', [id], (err, rows) => {
+            res.redirect('/reportes');
+        });
+        connection.release();
+    });
+}
+
 
 module.exports = controller;

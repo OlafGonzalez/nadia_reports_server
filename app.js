@@ -10,6 +10,8 @@ const customerRoutes = require('./src/routes/customer');
 const usuarioRoutes = require('./src/routes/usuarios')
 const appRoutes = require('./src/routes/app')
 const coordinadoresRoutes = require('./src/routes/coordinador')
+const historialRoutes = require('./src/routes/historial')
+
 
 // settings
 require('./src/settings/passport')
@@ -38,6 +40,7 @@ app.use((req,res,next) =>{
 
 // routes
 app.use('/admin', usuarioRoutes);
+app.use('/historial', historialRoutes);
 app.use('/reportes',coordinadoresRoutes)
 app.use('/',appRoutes)
 
