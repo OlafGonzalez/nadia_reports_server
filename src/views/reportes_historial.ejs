@@ -1,0 +1,62 @@
+<% if (rol=="ADMIN" ) { %>
+    <%- include('./partials/_header'); %>
+<% } %>
+
+<% if (rol=="COORDINADOR" ) { %>
+    <%- include('./partials/_header_coordinador'); %>
+<% } %>
+
+                        <div class="container mt-4">
+                            <h1>HISTORIAL
+                            </h1>
+                            <br>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <table class="table table-striped table-hover">
+                                        <thead>
+                                            <tr>
+                                                <td>ID</td>
+                                                <td>SEDE</td>
+                                                <td>Usuarios atendidos</td>
+                                                <td>Expedientes iniciados</td>
+                                                <td>Acuerdos Reparatorios</td>
+                                                <td>Sesiones conjuntas</td>
+                                                <td>Fecha</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% if (reportes) { %>
+                                                <% for(var i=0; i < reportes.length; i++) { %>
+                                                    <tr>
+                                                        <td>
+                                                            <%= reportes[i].id %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].nombre %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].usuarios_atendidos %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].expedientes_iniciados %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].acuerdos_reparatorios %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].sesiones_conjuntas %>
+                                                        </td>
+                                                        <td>
+                                                            <%= reportes[i].fecha_reporte %>
+                                                        </td>
+                                                    </tr>
+                                                    <% } %>
+                                                        <% } %>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <%- include('./partials/_footer'); %>

@@ -99,3 +99,25 @@ exports.FindReportesDiariosForAdmin = async (req,hoy) => {
     });
     return promise;
 }
+
+exports.FindReportesByFilters = async (condition) => {
+    let promise = new Promise(async (resolve, reject) => {
+        try {
+            await pool.getConnection(async (err, connection) => {
+
+                await connection.query('select RS.*, S.nombre from reportes_sedes as RS left join sedes as S on S.id = RS.id_sede where '+condition+'',function (err, reportes) {
+                    if (err) {
+                        resolve(null)
+                    } else {
+                        resolve(reportes)
+                    }
+                });
+                connection.release();
+            })
+        } catch (error) {
+            reject(error);
+        }
+    });
+    return promise;
+}
+
