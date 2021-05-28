@@ -58,10 +58,6 @@
                             <div class="form-group">
                                 <% for(var i=0; i < sedes.length; i++) { %>
                                     <div class="form-check form-check-inline">
-                                        <div class="form-group">
-                                            <input type="hidden" name="id_usuario" value="<%= sedes[i].id_user %>"
-                                                class="form-control">
-                                        </div>
                                         <input class="form-check-input" type="radio" name="id_sede"
                                             id="inlineRadio<%=sedes[i].id_sede%>" value="<%=sedes[i].id_sede%>" checked>
                                         <label class="form-check-label" for="inlineRadio<%=sedes[i].id_sede%>">
@@ -89,6 +85,7 @@
                                 <input type="number" name="sesiones_conjuntas" placeholder="Sesiones conjuntas" class="form-control">
                             </div>
                             <br>
+                            
                             <button type="submit" class="btn btn-primary">
                                 GUARDAR
                             </button>

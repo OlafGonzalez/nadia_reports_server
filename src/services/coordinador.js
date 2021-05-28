@@ -60,6 +60,26 @@ exports.FindReportesDiarios = async (req, id_user,hoy) => {
     return promise;
 }
 
+exports.FindUserByIdSede = async (id_sede) => {
+    let promise = new Promise(async (resolve, reject) => {
+        try {
+            await pool.getConnection(async (err, connection) => {
+                await connection.query('select * from sede_user where id_sede = '+id_sede+'',function (err, usuario) {
+                    if (err) {
+                        resolve(null)
+                    } else {
+                        resolve(usuario)
+                    }
+                });
+                connection.release();
+            })
+        } catch (error) {
+            reject(error);
+        }
+    });
+    return promise;
+}
+
 exports.FindReportesDiariosForAdmin = async (req,hoy) => {
     let promise = new Promise(async (resolve, reject) => {
         try {

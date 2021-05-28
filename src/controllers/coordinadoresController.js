@@ -49,6 +49,9 @@ controller.save = async (req,res) =>{
     let hoy = new Date()
     data.fecha_reporte = hoy
     console.log(req.body)
+    let id_usuario = await coordinadorService.FindUserByIdSede(data.id_sede)
+    data.id_usuario = id_usuario
+
     pool.getConnection((err, connection) => {
         const query = connection.query('INSERT INTO reportes_sedes set ?', data, (err, report) => {
             res.redirect('/reportes');
