@@ -17,8 +17,9 @@ controller.busqueda = async (req,res) =>{
         condition += ' AND RS.fecha_reporte <= '  + '"' + params.Initialdate + '"'
     if(params.Finaldate != '')
         condition += ' AND RS.fecha_reporte <= ' + '"' + params.Finaldate + '"'
+    if(params.id_sede != '')
+        condition+= ' AND id_sede = ' +params.id_sede
     
-    condition+= ' AND id_sede = ' +params.id_sede
     console.log(condition)
     let reportes = await coordinadorService.FindReportesByFilters(condition)
 
