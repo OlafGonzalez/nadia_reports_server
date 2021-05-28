@@ -95,6 +95,30 @@ exports.formatDateOnlyDate = function (date) {
     return fecha;
 }
 
+exports.formatDateOnlyDateView = function (date) {
+    var d = new Date(date),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear(),
+        hour = d.getHours(),
+        minutes = d.getMinutes(),
+        seconds = d.getSeconds();
+
+    if (month.length < 2)
+        month = '0' + month;
+    if (day.length < 2)
+        day = '0' + day;
+    if (hour.length < 2)
+        hour = '0' + hour;
+    if (minutes < 10)
+        minutes = '0' + minutes;
+    if (seconds < 10)
+        seconds = '0' + seconds;
+
+    var fecha =  day + '/' + month + '/' + year;
+    return fecha;
+}
+
 exports.inArray = function (needle, haystack) { 
     var length = haystack.length; 
     for(var i = 0; i < length; i++) { 

@@ -10,6 +10,7 @@ controller.home = async (req,res) =>{
     let id_user = req.session.usuario.id
     let rol = req.session.usuario.rol
     let hoy = utilities.formatDateOnlyDate(new Date())
+    let dateforview = utilities.formatDateOnlyDateView(new Date())
 
     let t_ua = 0
     let t_ei = 0
@@ -42,7 +43,7 @@ controller.home = async (req,res) =>{
         t_ei:t_ei,
         t_ar:t_ar,
         t_sc:t_sc,
-        today:hoy
+        today:dateforview
     });
 
 }
