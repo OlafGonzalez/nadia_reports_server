@@ -77,6 +77,17 @@
 
                                         </tfoot>
                                     </table>
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <% for(var i=0; i < reportes.length; i++) { %>
+                                                <h5><%= reportes[i].nombre %></h5>
+                                                <p>Usarios Atendidos: <%= reportes[i].usuarios_atendidos %></p>
+                                                <p>Expedientes iniciados: <%= reportes[i].expedientes_iniciados %></p>
+                                                <p>Acuerdos Reparatorios: <%= reportes[i].acuerdos_reparatorios %></p>
+                                                <p>Sesiones conjuntas: <%= reportes[i].sesiones_conjuntas %></p>
+                                            <% } %>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-md-5">
                                     <div class="card">
