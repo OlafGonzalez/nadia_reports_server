@@ -32,6 +32,8 @@ controller.home = async (req,res) =>{
     }
 
 
+
+
     res.render('reportes_sede',{
         sedes:sedes_user,
         reportes:reportes,
@@ -39,7 +41,8 @@ controller.home = async (req,res) =>{
         t_ua:t_ua,
         t_ei:t_ei,
         t_ar:t_ar,
-        t_sc:t_sc
+        t_sc:t_sc,
+        today:hoy
     });
 
 }
@@ -51,7 +54,6 @@ controller.save = async (req,res) =>{
     console.log(req.body)
     let id_usuario = await coordinadorService.FindUserByIdSede(data.id_sede)
     data.id_usuario = id_usuario
-
     pool.getConnection((err, connection) => {
         const query = connection.query('INSERT INTO reportes_sedes set ?', data, (err, report) => {
             res.redirect('/reportes');
