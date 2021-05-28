@@ -20,6 +20,26 @@ exports.FindSedeUserByIdUser = async (req, id_user) => {
     return promise;
 }
 
+exports.FindSedeUserForAdmin = async () => {
+    let promise = new Promise(async (resolve, reject) => {
+        try {
+            await pool.getConnection(async (err, connection) => {
+                await connection.query('select * from  nch_reports_.sede_user as SU inner join nch_reports_.sedes as S on SU.id_sede = S.id',function (err, sedes_user) {
+                    if (err) {
+                        resolve(null)
+                    } else {
+                        resolve(sedes_user)
+                    }
+                });
+                connection.release();
+            })
+        } catch (error) {
+            reject(error);
+        }
+    });
+    return promise;
+}
+
 exports.FindReportesDiarios = async (req, id_user,hoy) => {
     let promise = new Promise(async (resolve, reject) => {
         try {

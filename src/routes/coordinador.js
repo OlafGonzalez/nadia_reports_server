@@ -4,9 +4,9 @@ const {isLoggedIn} = require('../settings/auth')
 
 
 router.get("/",isLoggedIn,coordinadorController.home)
-router.get('/update/:id', coordinadorController.edit);
-router.post('/add', coordinadorController.save);
-router.post('/update/:id', coordinadorController.update);
+router.get('/update/:id',isLoggedIn, coordinadorController.edit);
+router.post('/add',isLoggedIn, coordinadorController.save);
+router.post('/update/:id', isLoggedIn,coordinadorController.update);
 
 
 

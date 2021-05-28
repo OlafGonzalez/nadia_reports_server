@@ -18,8 +18,10 @@ controller.home = async (req,res) =>{
 
     if(rol == "ADMIN"){
         reportes = await coordinadorService.FindReportesDiariosForAdmin(req,hoy)
+        sedes_user = await coordinadorService.FindSedeUserForAdmin()
     }else{
         reportes = await coordinadorService.FindReportesDiarios(req,id_user,hoy)
+        sedes_user = await coordinadorService.FindSedeUserByIdUser(req,id_user)
     }
 
     for (const reporte of reportes) {
@@ -29,7 +31,6 @@ controller.home = async (req,res) =>{
         t_sc+= reporte.sesiones_conjuntas
     }
 
-    sedes_user = await coordinadorService.FindSedeUserByIdUser(req,id_user)
 
     res.render('reportes_sede',{
         sedes:sedes_user,
