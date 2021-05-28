@@ -21,6 +21,8 @@
     "mysql": "^2.18.1",
     "node-localstorage": "^2.1.6",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "session-keystore": "^1.0.3",
+    "store2": "^2.12.0"
   }
 }

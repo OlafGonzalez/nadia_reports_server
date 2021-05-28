@@ -6,7 +6,8 @@ controller.sigin = (req,res) =>{
 }
 
 controller.home = (req,res) =>{
-    let rol = sessionStorage.getItem('rol')
+    //let rol = req.session.getItem('rol')
+    let rol = req.session.usuario.rol
     res.render('home',{
         rol:rol
     });

@@ -2,6 +2,7 @@ const passport = require('passport')
 const LocalStrategy = require("passport-local").Strategy
 const usuarioService = require('../services/usuario')
 const bycryptjs = require('bcryptjs')
+
 if (typeof localStorage === "undefined" || localStorage === null) {
     var LocalStorage = require('node-localstorage').LocalStorage;
     localStorage = new LocalStorage('./scratch');
@@ -52,10 +53,13 @@ passport.use('local-signin', new LocalStrategy({
         ////USUARIO O CONTRA INCORRECTO
         return done(null,false, req.flash('signupMessage','La contrasena es incorrecta.'));
     }
-    sessionStorage.setItem('id_user', user.id);
-    sessionStorage.setItem('rol',user.rol)
+    //localStorage.setItem('id_user', user.id);
+    //localStorage.setItem('rol',user.rol)
+    req.session.usuario = user
+    //const otherStore = new SessionKeystore({ id:user.id,rol:user.rol  })
+    //store.session("data",{ id:user.id,rol:user.rol  })
 
-    done(null,user)
+    done(null,user,req)
 
 
 
